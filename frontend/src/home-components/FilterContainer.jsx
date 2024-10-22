@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './HomeComponents.css';
+import '../pages/Home.css';
 
 export function FilterContainer({ onCreateRoom }) {
     const [selectedFilters, setSelectedFilters] = useState({

@@ -1,12 +1,15 @@
 .titlebar {
     background-color: #203E62;
-    height: 100px;
+    height: 150px;
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    position: relative; /* Allows profile icon container to be positioned absolutely */
 }
 
 .title {
     color: #F0D097;
     font-family: 'Cabin';
-    font-size: 48px;
+    font-size: 64px;
     font-weight: 500;
     font-style: italic;
     padding: 1.2%;
@@ -17,45 +20,30 @@
     height: 10px;
 }
 
-.filters-label {
-    font-family: 'Cabin', sans-serif;
-    font-weight: 600; 
-    font-size: 36px; 
-    color: #244266; 
-    width: 102px; 
-    height: 44px; 
+.profile-icon-container {
+    position: absolute;
+    top: 10px; /* Adjust this value as needed to fine-tune vertical alignment */
+    right: 20px;
+    width: 100px;  /* Fixed width for the profile picture container */
+    height: 100px; /* Fixed height for the profile picture container */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    align-items: center; /* Vertically center the profile icon inside the container */
+    justify-content: center; /* Center the profile icon horizontally */
 }
 
-.filter-button {
-    float: right;
-    font-size: 24px;
-    border-radius: 15px;
-    margin-right: 1%;
-    width: 200px;
-    height: 60px;
-    background-color: #325886;
-}
-
-.add-filter-button {
-    float: right;
-    font-size: 64px;
-    border-radius: 15px;
-    margin-right: 1%;
-    width: 60px;
-    height: 60px;
-    background-color: #325886;
+.profile-icon {
+    width: 100px; /* Adjust size */
+    height: 100px; /* Adjust size */
+    border-radius: 50%; /* Make the image round */
+    object-fit: cover; /* Ensures the image fits properly in the container */
 }
 
 .status-indicator {
     position: absolute;
     bottom: 5px;
     right: 5px;
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     border: 2px solid #FFFFFF;
 }
@@ -72,6 +60,28 @@
     background-color: #FF0000;
 }
 
+.status-dropdown {
+    background-color: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px; /* Adjust to move the dropdown below the button */
+    right: 0px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.status-option {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.status-option:hover {
+    background-color: #f0f0f0;
+}
+
 .status-selector {
     margin-left: 20px;
     padding: 5px;
@@ -81,6 +91,8 @@
 .room-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 2%; /* Gap between the rows and columns */
+    padding: 2%; /* Optional: padding around the entire grid */
     overflow: scroll;
     flex-grow: 1;
     height: 100%;
@@ -102,11 +114,15 @@
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+
+    /* Add margin as a percentage of the container’s width */
+    margin: 2%; /* Margin between the room cards, relative to the width of the page */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for visual depth */
 }
 
 .room-card-footer {
-    background-color: #325886; /* Blue color for the footer */
-    height: 70px; /* Height of the footer */
+    background-color: #325886; 
+    height: 70px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -116,18 +132,15 @@
 }
 
 .room-name {
-    .room-name {
-        color: #FFFFFF; 
-        font-family: 'Cabin', sans-serif; 
-        font-size: 36px; 
-        font-weight: 600;
-        margin: 0;
-        height: 44px;
-        overflow: hidden;
-        text-overflow: ellipsis; 
-        white-space: nowrap; 
-    }
-    
+    color: #FFFFFF; 
+    font-family: 'Cabin', sans-serif; 
+    font-size: 36px; 
+    font-weight: 600;
+    margin: 0;
+    height: 44px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
 }
 
 .join-room-button {
@@ -166,26 +179,32 @@
     background-color: #FCFCFC; 
     border-radius: 15px; 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between; /* Spread icon to the left and number to the right */
+    padding: 0 10px; /* Optional: Add some padding inside the container */
     border: 1px solid #325886; 
-}
-
-.participant-icon {
-    color: #325886; 
-    font-size: 32px; 
-}
-
-.participant-number {
-    color: #325886; 
+    color: #244266; 
     font-family: 'Cabin', sans-serif; 
     font-size: 24px; 
     font-weight: 500; 
 }
 
+.participant-icon {
+    color: #244266; 
+    font-size: 32px; 
+}
+
+.participant-number {
+    color: #244266; 
+    font-family: 'Cabin', sans-serif; 
+    font-size: 24px; 
+    font-weight: 500;
+    margin-left: auto; /* Ensure it's aligned to the right */
+}
+
 .room-tag {
-    background-color: #F0D097; 
-    color: #325886; 
+    background-color: #325886; 
+    color: #EECE94; 
     font-family: 'Cabin', sans-serif; 
     font-size: 24px; 
     font-weight: 600; 
@@ -205,23 +224,19 @@
 .filter-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Filters will remain on the left */
     background-color: #FFFFFF; 
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 10px 20px;
+    margin-bottom: 10px; 
     border-radius: 15px;
-}
-
-.filters-label {
-    font-family: 'Cabin', sans-serif; 
-    font-weight: 600; 
-    font-size: 36px; 
-    color: #325886; 
+    gap: 10px; /* Optional: gap between filters */
+    max-width: 2280px; /* Add a maximum width to prevent content from spreading too far */
 }
 
 .filter-buttons {
     display: flex;
-    gap: 10px; 
+    gap: 10px; /* Keep a gap between each filter dropdown */
+    align-items: center; /* Vertically align items */
 }
 
 .filter-button {
@@ -229,13 +244,16 @@
     color: #FCFCFC; 
     font-family: 'Cabin', sans-serif;
     font-weight: 500; 
-    font-size: 18px; 
+    font-size: 16px; /* Reduced font size */
     border: none;
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px 10px; /* Reduced padding for a more compact button */
     cursor: pointer;
     transition: background-color 0.3s;
+    width: auto; /* Auto width to fit the content */
+    height: 60px; /* Reduced height */
 }
+
 
 .filter-button:hover {
     background-color: #244266; 
@@ -245,27 +263,39 @@
     background-color: #325886; 
     color: #FCFCFC; 
     font-family: 'Cabin', sans-serif; 
-    font-size: 24px;
+    font-size: 64px;
     font-weight: 600; 
     border: none;
     border-radius: 15px;
-    width: 44px;
-    height: 44px;
+    width: 60px;
+    height: 60px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.create-room-button {
-    float: right;
+.filters-label {
     font-family: 'Cabin', sans-serif;
-    font-size: 40px; 
     font-weight: 600; 
-    border-radius: 15px;
-    margin-right: 1%; 
-    width: 224px; 
-    height: 49px;
+    font-size: 36px; 
+    color: #244266; 
+    width: 102px; 
+    height: 44px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.create-room-button {
+    margin-left: auto; /* This pushes the button all the way to the right */
+    font-family: 'Cabin', sans-serif;
+    font-size: 32px; 
+    font-weight: 600; 
+    border-radius: 10px;
+    width: 345px; 
+    height: 94px;
     background-color: #172F49; 
     color: #F3D09B; 
     border: none; 

@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import '../components/Components.css';
-import './HomeComponents.css';
+import '../pages/Home.css';
 
-export function HomeTitlebar() {
+export function HomeTitleBar() {
     // State to manage the current status
     const [status, setStatus] = useState('online');
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+
+    // Toggle dropdown visibility
+    const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+    };
 
     // Handler function to update the status
-    const handleStatusChange = (event) => {
-        setStatus(event.target.value);
+    const handleStatusChange = (newStatus) => {
+        setStatus(newStatus);
+        setDropdownVisible(false); // Close dropdown after selection
     };
 
     return (
@@ -21,17 +28,19 @@ export function HomeTitlebar() {
                         alt="Profile" 
                         className="profile-icon" 
                     />
-                    <div className={`status-indicator ${status}`}></div>
+                    <button className={`status-indicator ${status}`} onClick={toggleDropdown}></button>
+                    {dropdownVisible && (
+                        <div className="status-dropdown">
+                            <div className="status-option" onClick={() => handleStatusChange('online')}>Online</div>
+                            <div className="status-option" onClick={() => handleStatusChange('offline')}>Offline</div>
+                            <div className="status-option" onClick={() => handleStatusChange('dnd')}>Do Not Disturb</div>
+                        </div>
+                    )}
                 </div>
-                <select className="status-selector" value={status} onChange={handleStatusChange}>
-                    <option value="online">Online</option>
-                    <option value="offline">Offline</option>
-                    <option value="dnd">Do Not Disturb</option>
-                </select>
             </div>
             <div className="divider"></div>
         </>
     );
 }
 
-export default HomeTitlebar;
+export default HomeTitleBar;

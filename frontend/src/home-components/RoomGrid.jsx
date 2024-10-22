@@ -1,5 +1,5 @@
 import React from 'react';
-import './HomeComponents.css';
+import '../pages/Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -26,15 +26,12 @@ export function RoomGrid() {
                             <div className="participant-count">
                                 <div className="participant-icon-container">
                                     <FontAwesomeIcon icon={faUser} className="participant-icon" />
+                                    <span className="participant-number">{room.participantCount}+</span>
                                 </div>
-                                <span className="participant-number">{room.participantCount}+</span>
                             </div>
                         </div>
                         <div className="room-card-footer">
                             <p className="room-name">{room.roomName}</p>
-                            <div className="room-tag">
-                                {room.tag}
-                            </div>
                             <button
                                 className="join-room-button"
                                 onClick={() => handleJoin(room.roomName)}
