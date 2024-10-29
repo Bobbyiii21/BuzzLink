@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-
 const Schema = mongoose.Schema
+const userSchema = require('./UserModel').schema
 
 const roomSchema = new Schema({
     roomName: {
@@ -14,6 +14,9 @@ const roomSchema = new Schema({
     participantLimit: {
         type: Number,
         required: true
+    }, 
+    participantList: {
+        type: [userSchema]
     }
 }, { timestamps: true }, {collection: "Rooms"})
 

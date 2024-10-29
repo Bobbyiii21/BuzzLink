@@ -29,7 +29,7 @@ const getRooms = async (req, res) => {
 
 const createRoom = async (req, res) => {
    
-    const {roomName, roomType, participantLimit} = req.body
+    const {roomName, roomType, participantLimit, participantList} = req.body
 
     if(participantLimit <= 0){
         return res.status(400).json({error: 'participantLimit must be greater than 0'})
@@ -37,7 +37,7 @@ const createRoom = async (req, res) => {
 
     //add document to db
     try {
-        const room = await Room.create({roomName, roomType, participantLimit})
+        const room = await Room.create({roomName, roomType, participantLimit, participantList})
         res.status(200).json(room)
 
     }catch (error){
