@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Components.css'
 
 
 const RoomForm = () => {
   const [formData, setFormData] = useState({
     roomName: '',
     roomType: '',
-    participantLimit: '',
-    participantList: [userSchema]
+    participantLimit: 0,
   });
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -35,13 +35,25 @@ const RoomForm = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await axios.post('/room/create', formData);
+      const response = await axios.post('/api/rooms/', formData);
       if (response.status === 200) {
         setSuccessMessage('Room created successfully!');
-        setFormData({ roomName: '', roomType: '', participantLimit: '' });
+        setFormData({ roomName: '', roomType: '', participantLimit: 0 });
       }
     } catch (err) {
-      setError('Error creating room. Please try again.');
+        if (err.response) {
+          // Server responded with a status other than 200 range
+          console.error('Error response:', err.response);
+          setError(`Error: ${err.response.data.message || 'Unable to create room.'}`);
+        } else if (err.request) {
+          // No response received from the server
+          console.error('Error request:', err.request);
+          setError('No response from server. Please check your network connection.');
+        } else {
+          // Something else happened during request setup
+          console.error('Error message:', err.message);
+          setError(`Request error: ${err.message}`);
+        }
     }
   };
 
@@ -71,10 +83,10 @@ const RoomForm = () => {
             onChange={handleChange}
             required
           >
-            <option value="">Select a type</option>
+            <option value="Test">Test</option>
             <option value="Study">Study</option>
             <option value="Gaming">Gaming</option>
-            <option value="Watch Party">Watch Party</option>
+            <option value="Watch Party">Some other type</option>
           </select>
         </div>
 
@@ -85,7 +97,7 @@ const RoomForm = () => {
             name="participantLimit"
             value={formData.participantLimit}
             onChange={handleChange}
-            min="0"
+            min="1"
           />
         </div>
 

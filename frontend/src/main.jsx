@@ -14,14 +14,16 @@ import Forgot from "./pages/Forgot";
 import Create from "./pages/Create";
 import Meeting from './pages/Meeting.jsx';
 import Chatroom from './chatroom.jsx';
+import RoomForm from "./components/RoomForm.jsx"
 
 
-
+//for testing the frontend roomForm element, change back before making PR
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    //element: <Login />,
+    element: <RoomForm></RoomForm>,
     errorElement: <ErrorPage />,
   },
   {
