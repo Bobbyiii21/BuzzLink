@@ -42,9 +42,9 @@ async function initMongodb() {
   const roomsSchema = new mongoose.Schema({
     roomName: String,
     roomType: String,
-
     participantLimit: Number,
-    //participants: [{ type: app.mongoose.Schema.ObjectId, ref: 'Users'}]
+    participants: [{ type: mongoose.Schema.ObjectId, ref: 'Users'}],
+    createdBy: { type: mongoose.Schema.ObjectId, ref: 'Users'}
 
   }, {
     collection: 'Rooms'

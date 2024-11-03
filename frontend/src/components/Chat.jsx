@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { VisibilityContext } from "./VisibilityContext"
 import './Components.css'
 
-export function Chat() {
+export function Chat({roomId}) {
     const {isVisible} = useContext(VisibilityContext);
 
     return (

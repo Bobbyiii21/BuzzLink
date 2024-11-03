@@ -14,6 +14,23 @@ const roomSchema = new Schema({
     participantLimit: {
         type: Number,
         required: true
+    },
+    createdAt: {
+        type: Date,
+        required: true
+    },
+    updatedAt: {
+        type: Date,
+        required: false
+    },
+    participants: { 
+        type: [{ type: mongoose.Schema.ObjectId, ref: 'Users'}],
+        required: true 
+    },
+    createdBy: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Users',
+        required: true
     }
 }, { timestamps: true }, {collection: "Rooms"})
 
