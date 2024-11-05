@@ -16,7 +16,7 @@ function Meeting() {
     return (
         <>
             <Titlebar></Titlebar>
-            <main>
+            <main className="meeting-main">
                 <VisibilityProvider>
                     <div className="meeting">
                         <div className="participant-grid">

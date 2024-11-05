@@ -8,7 +8,11 @@ const getRoom = async (req, res) => {
     return res.status(404).json({error: 'No such room'})
   }
 
-  const room = await Room.findById(id)
+  const projection = {
+    roomPassword: 0
+  }
+
+  const room = await Room.findById(id, projection )
 
   if (!room) {
     return res.status(404).json({error: 'No such room'})
@@ -18,7 +22,10 @@ const getRoom = async (req, res) => {
 
 const getRooms = async (req, res) => {
 
-  const rooms = await Room.find({}).sort({createdAt: -1})
+  const projection = {
+    roomPassword: 0
+  }
+  const rooms = await Room.find({}, projection).sort({createdAt: -1})
 
   if (!rooms) {
     return res.status(404).json({error: 'No such room'})
@@ -29,7 +36,8 @@ const getRooms = async (req, res) => {
 
 const createRoom = async (req, res) => {
 
-  const {roomName, roomType, participantLimit} = req.body
+  const {roomName, roomType, participantLimit, roomPassword} = req.body
+
 
   if (participantLimit <= 0) {
     return res.status(400).json({error: 'participantLimit must be greater than 0'})
@@ -37,7 +45,14 @@ const createRoom = async (req, res) => {
 
   //add document to db
   try {
-    const room = await Room.create({roomName, roomType, participantLimit, participantList: []})
+    const room = await Room.create({
+      roomName,
+      roomType,
+      participantLimit,
+      participantList: [],
+      roomPassword,
+      locked: roomPassword ? true : false
+    })
     res.status(200).json(room)
 
   } catch (error) {
@@ -95,6 +110,7 @@ const updateRoom = async (req, res) => {
  */
 const filterRoom = async (req, res) => {
   let {low, up, roomType, showLocked} = req.body;
+
   const query = {
     $and: [
       { participantList: { $exists: true } },
@@ -106,18 +122,27 @@ const filterRoom = async (req, res) => {
         }}
     ]
   }
+
   if (!showLocked) {
-    query.roomPassword = {$exist: false}
+    query.$and.push({
+      roomPassword: {$exists: false}
+    })
   }
   if (roomType) {
     query.roomType = roomType;
   }
+
+  const projection = {
+    roomPassword: 0
+  }
+
   try {
-    const rooms = await Room.find(query);
+    const rooms = await Room.find(query, projection);
     console.log(rooms);
     res.status(200).json(rooms);
   } catch (err) {
-    res.status(400).send("Error when filtering rooms: " + err);
+    console.log("Error when filtering rooms: ", err);
+    res.status(400).send("Error when filtering rooms: ");
   }
 }
 

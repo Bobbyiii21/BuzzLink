@@ -16,6 +16,10 @@ const roomSchema = new Schema({
         type: Number,
         required: true
     },
+    locked: {
+      type: Boolean,
+      required: true,
+    },
     participantList: {
         type: [Object],
         required: true

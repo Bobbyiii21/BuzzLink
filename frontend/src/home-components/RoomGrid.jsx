@@ -1,16 +1,9 @@
 import React from 'react';
 import '../pages/Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
-export function RoomGrid() {
-    // Sample room data
-    const rooms = [
-        { id: 1, roomName: "WebDev @ GT", participantCount: 20, tag: "Homework" },
-        { id: 2, roomName: "BuzzLink UI/UX", participantCount: 15, tag: "Club" },
-        { id: 3, roomName: "React Workshop", participantCount: 30, tag: "Class" },
-        { id: 4, roomName: "JavaScript Basics", participantCount: 25, tag: "Seminar" },
-    ];
+export function RoomGrid({rooms}) {
 
     // Function to handle the join button click
     const handleJoin = (roomName) => {
@@ -21,15 +14,23 @@ export function RoomGrid() {
         <>
             <div className="room-grid">
                 {rooms.map((room) => (
-                    <div key={room.id} className="room-card">
+                    <div key={room._id} className="room-card">
                         <div className="room-card-header">
                             <div className="participant-count">
                                 <div className="participant-icon-container">
                                     <FontAwesomeIcon icon={faUser} className="participant-icon" />
-                                    <span className="participant-number">{room.participantCount}+</span>
+                                    <span className="participant-number">{room.participantList.length}+</span>
                                 </div>
                             </div>
+                            <div>
+                              {room.locked ? <FontAwesomeIcon icon={faLock} className="lock-icon"/> : <></>}
+                            </div>
                         </div>
+                      <div className="room-tag-container">
+                        <div className="room-tag">
+                          {room.roomType}
+                        </div>
+                      </div>
                         <div className="room-card-footer">
                             <p className="room-name">{room.roomName}</p>
                             <button

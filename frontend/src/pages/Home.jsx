@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { HomeTitleBar } from '../home-components/HomeTitleBar';
 import { FilterContainer } from '../home-components/FilterContainer';
 import { RoomGrid } from '../home-components/RoomGrid';
@@ -11,13 +11,15 @@ function Home() {
         alert("implement room creation");
     };
 
+  const [rooms, setRooms] = useState([]);
+
     return (
         <>
             <HomeTitleBar />
             <main>
                 <div className="homepage">
-                    <FilterContainer onCreateRoom={handleCreateRoom} />
-                    <RoomGrid />
+                    <FilterContainer onCreateRoom={handleCreateRoom} setRooms={setRooms} />
+                    <RoomGrid rooms={rooms} />
                 </div>
             </main>
         </>
