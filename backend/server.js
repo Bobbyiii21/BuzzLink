@@ -190,9 +190,91 @@ async function runServer() {
     res.send('The answer for hello!');
   });
 
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on('connection', (ws) => {
+  console.log('A new client connected!');
+
+  // Send a welcome message to the client
+  //ws.send('Welcome to the chat server!');
+
+  // Handle incoming messages from clients
+  ws.on('message', (message) => {
+    console.log(`Received: ${message}`);
+
+    // Broadcast the message to all connected clients
+    wss.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(message);
+      }
+    });
+  });
+
+  // Handle connection close
+  ws.on('close', () => {
+    console.log('A client disconnected');
+  });
+  });
+
+  console.log('WebSocket server started on ws://localhost:8080');
+
   server.listen(port, () => {
     console.log('the server is running at: ', port);
   });
+
+  //--------------------------------------------------------
+  // Setup WebSocket server
+ /** const WebSocket = require('ws');
+  const url = require('url');
+
+  // Create a WebSocket server on port 8080
+  const wss = new WebSocket.Server({ port: 8080 });
+
+  console.log('WebSocket server started on ws://localhost:8080');
+
+  // Maintain a mapping of chatrooms and their connected clients
+  const chatrooms = {};
+
+  wss.on('connection', (ws, req) => {
+  // Parse the chatroom ID from the URL
+  const pathname = url.parse(req.url).pathname;
+  const chatroomId = pathname.split('/')[2];
+
+  if (!chatroomId) {
+    ws.close(1008, 'Chatroom ID is required');
+    return;
+  }
+
+  // Add the WebSocket connection to the appropriate chatroom
+  if (!chatrooms[chatroomId]) {
+    chatrooms[chatroomId] = new Set();
+  }
+  chatrooms[chatroomId].add(ws);
+
+  console.log(`Client connected to chatroom: ${chatroomId}`);
+
+  // Handle incoming messages from a client
+  ws.on('message', (message) => {
+    console.log(`Received in chatroom ${chatroomId}: ${message}`);
+
+    // Broadcast the message to all clients in the chatroom except the sender
+    chatrooms[chatroomId].forEach((client) => {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(`Chatroom ${chatroomId}: ${message}`);
+      }
+    });
+  });
+
+  // Remove the WebSocket connection when it closes
+  ws.on('close', () => {
+    console.log(`Client disconnected from chatroom: ${chatroomId}`);
+    chatrooms[chatroomId].delete(ws);
+    if (chatrooms[chatroomId].size === 0) {
+      delete chatrooms[chatroomId]; // Clean up empty chatrooms
+    }
+  });
+}); **/
 
 }
 

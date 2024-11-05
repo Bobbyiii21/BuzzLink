@@ -66,11 +66,33 @@
     border-radius: 34px;
     position: absolute;
     bottom: 3%;
-    width: 15.5%;
+    width: 12%;
     height: 6%;
     margin: 0.5%;
     padding-left: 8px;
     font-size: 18px;
+}
+
+.chat-messages {
+    height: 80%;
+    overflow: scroll;
+}
+
+/**.chat-message {
+    font-size: 18px;
+    height: 10%;
+    bottom: 2%;
+    position: absolute;
+}**/
+
+.send-button {
+    background-color: #F0D097;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    bottom: 3.9%;
+    position: absolute;
+    right: 1.5%;
 }
 
 .bottom-buttons-container {
