@@ -13,17 +13,23 @@ export function Chat({roomId}) {
 
     useEffect(() => {
         // Connect to WebSocket server with a unique endpoint based on roomId
-        //socket.current = new WebSocket(`ws://localhost:8080/chatroom/${roomId}`);
-        socket.current = new WebSocket(`ws://localhost:8080`);
+        socket.current = new WebSocket(`ws://localhost:8080/chatroom/${roomId}`);
 
         // Handle incoming messages
         socket.current.onmessage = async (event) => {
+            let messageData;
             if (event.data instanceof Blob) {
               // Convert Blob to string
               const text = await event.data.text();
-              setMessages((prevMessages) => [...prevMessages, text]);
+              messageData = text;
             } else {
-              setMessages((prevMessages) => [...prevMessages, event.data]);
+              messageData = event.data;
+            }
+
+            // Parse the message and only add it if it belongs to this room
+            const parsedMessage = JSON.parse(messageData);
+            if (parsedMessage.roomId === roomId) {
+                setMessages((prevMessages) => [...prevMessages, messageData]);
             }
         };
 
@@ -36,8 +42,7 @@ export function Chat({roomId}) {
     const sendMessage = () => {
         if (input) {
             // Send message through WebSocket
-            //socket.current.send(JSON.stringify({ roomId, message: input }));
-            socket.current.send(JSON.stringify({message: input}));
+            socket.current.send(JSON.stringify({ roomId, message: input }));
             setInput(''); // Clear input field
         }
     };

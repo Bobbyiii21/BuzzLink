@@ -13,6 +13,7 @@ const getRoom = async (req, res) => {
     if(!room) {
         return res.status(404).json({error: 'No such room'})
     }
+
     res.status(200).json(room)
 }
 

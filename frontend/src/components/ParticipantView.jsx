@@ -1,9 +1,9 @@
 import './Components.css'
 
-export function ParticipantView({participant}) {
+export function ParticipantView({participant, key}) {
     return (
         <>
-            <div className="participant-view">
+            <div className="participant-view" key={key}>
                 <div className="participant-video"></div>
                 <div className="participant-name">
                     {participant.displayName}

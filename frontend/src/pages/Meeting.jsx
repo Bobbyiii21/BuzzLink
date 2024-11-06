@@ -15,10 +15,10 @@ function Meeting() {
     useEffect(() => {
         const fetchRoomData = async () => {
             try {
-                const response = await fetch(`http://localhost:8001/rooms/${roomId}`)
+                const response = await fetch(`http://localhost:8001/api/rooms/${roomId}`)
                 const data = await response.json()
                 setRoomData(data)
-                setParticipants(data.participants || [])
+                setParticipants(data.participantList || [])
             } catch (error) {
                 console.error('Error fetching room data:', error)
             }
@@ -28,24 +28,17 @@ function Meeting() {
             fetchRoomData()
         }
 
-        // Fetch room data every second
+        // Fetch room data every 3 seconds
         const intervalId = setInterval(() => {
             if (roomId) {
                 fetchRoomData()
             }
-        }, 1000)
+        }, 3000)
 
         // Cleanup interval on component unmount
         return () => clearInterval(intervalId)
 
     }, [roomId])
-
-    /* Sample Room Participants
-    const Krish = {displayName: "Krish"}
-    const Sam = {displayName: "Sam"}
-    const Josh = {displayName: "Josh"}
-
-    var participants = [Krish, Sam, Josh, Krish, Sam, Krish, Krish, Sam, Josh, Krish, Sam, Josh, Krish, Sam, Josh, Krish, Krish, Josh, Sam, Josh, Krish] */
 
     return (
         <>
@@ -54,9 +47,9 @@ function Meeting() {
                 <VisibilityProvider>
                     <div className="meeting">
                         <div className="participant-grid">
-                            {participants.map((participant) => { 
+                            {participants.map((participant, index) => { 
                                     return (
-                                        <ParticipantView participant={participant}/>
+                                        <ParticipantView key={index} participant={participant}/>
                                     )
                                 })
                             }
