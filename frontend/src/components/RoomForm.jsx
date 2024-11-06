@@ -35,7 +35,7 @@ const RoomForm = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await axios.post('/api/rooms/', formData);
+      const response = await axios.post('http://localhost:8001/api/rooms', formData);
       if (response.status === 200) {
         setSuccessMessage('Room created successfully!');
         setFormData({ roomName: '', roomType: '', participantLimit: 0 });
