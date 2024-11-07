@@ -6,7 +6,7 @@ const {
     getRooms, 
     getRoom, 
     deleteRoom, 
-    updateRoom
+    updateRoom, filterRoom
 } = require('../controllers/roomController')
 
 //GET all workouts
@@ -23,5 +23,7 @@ router.delete('/:id', deleteRoom)
 
 //UPDATE a workout
 router.patch('/:id', updateRoom)
+
+router.post('/filter', filterRoom)
 
 module.exports = router

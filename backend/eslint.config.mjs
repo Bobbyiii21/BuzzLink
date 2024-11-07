@@ -12,10 +12,9 @@ export default [
       "no-unused-vars": ["error", {            // Warn on unused variables
         "vars": "all", "args": "after-used", "ignoreRestSiblings": false
       }],
-      "require-await": "warn",
-      "semi": ["warn", "always"],            // Require semicolons
-      "quotes": ["warn", "single"],          // Use single quotes
-      "indent": ["warn", 2],                 // Enforce 2-space indentation
+      // "semi": ["warn", "always"],            // Require semicolons
+      // "quotes": ["warn", "single"],          // Use single quotes
+      // "indent": ["warn", 2],                 // Enforce 2-space indentation
       "no-debugger": "warn",                 // Disallow the use of debugger
       "prefer-const": "warn",                // Prefer const over let if variable is never reassigned
     },

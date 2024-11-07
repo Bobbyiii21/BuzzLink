@@ -93,9 +93,9 @@
     grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
     gap: 2%; /* Gap between the rows and columns */
     padding: 2%; /* Optional: padding around the entire grid */
-    overflow: scroll;
+    overflow: auto;
     flex-grow: 1;
-    height: 100%;
+    height: 62vh;
 }
 
 .rooms {
@@ -167,8 +167,19 @@
     transform: scale(0.98);
 }
 
+.room-card-header {
+    display: flex;
+    position: relative;
+    top: 10px;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-between;
+}
+
 .participant-count {
     display: flex;
+    position: relative;
+    left: 10px;
     align-items: center;
     gap: 10px;
 }
@@ -179,6 +190,7 @@
     background-color: #FCFCFC; 
     border-radius: 15px; 
     display: flex;
+    column-gap: 8px;
     align-items: center;
     justify-content: space-between; /* Spread icon to the left and number to the right */
     padding: 0 10px; /* Optional: Add some padding inside the container */
@@ -194,6 +206,13 @@
     font-size: 32px; 
 }
 
+.lock-icon {
+    position: relative;
+    right: 38px;
+    color: #244266;
+    font-size: 44px;
+}
+
 .participant-number {
     color: #244266; 
     font-family: 'Cabin', sans-serif; 
@@ -202,23 +221,25 @@
     margin-left: auto; /* Ensure it's aligned to the right */
 }
 
+.room-tag-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 65px;
+    justify-content: flex-end;
+}
 .room-tag {
     background-color: #325886; 
     color: #EECE94; 
     font-family: 'Cabin', sans-serif; 
     font-size: 24px; 
     font-weight: 600; 
-    border-radius: 15px; 
+    border-radius: 20px;
     padding: 5px 10px;
     text-align: center;
-    height: 40px;
-    width: 125px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 20px; 
-    bottom: 60px; 
+    height: 30px;
+    width: 100px;
+    margin-right: 10px;
 }
 
 .filter-container {
