@@ -14,7 +14,7 @@ import Forgot from "./pages/Forgot";
 import Create from "./pages/Create";
 import Meeting from './pages/Meeting.jsx';
 import Chatroom from './chatroom.jsx';
-import RoomForm from "./components/RoomForm.jsx"
+import RoomForm from "./pages/RoomForm.jsx"
 
 
 //for testing the frontend roomForm element, change back before making PR
@@ -22,8 +22,7 @@ import RoomForm from "./components/RoomForm.jsx"
 const router = createBrowserRouter([
   {
     path: "/",
-    //element: <Login />,
-    element: <RoomForm></RoomForm>,
+    element: <Login />,
     errorElement: <ErrorPage />,
   },
   {
@@ -41,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/chatroom",
     element: <Chatroom />
+  },
+  {
+    path: "/room-form", 
+    element: <RoomForm></RoomForm>
   }
   
 ]);

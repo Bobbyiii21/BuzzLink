@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Components.css'
+import './RoomForm.css'
 
 
 const RoomForm = () => {
   const [formData, setFormData] = useState({
     roomName: '',
-    roomType: '',
+    roomType: 'Test',
     participantLimit: 0,
   });
   const [error, setError] = useState('');
@@ -58,51 +58,56 @@ const RoomForm = () => {
   };
 
   return (
-    <div className="room-form">
-      <h2>Create a Room</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-      
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Room Name (required):</label>
-          <input
-            type="text"
-            name="roomName"
-            value={formData.roomName}
-            onChange={handleChange}
-            required
-          />
-        </div>
+    <div className="bgDeco">
+      <div className="mainContainer">
+        <div className= 'logo'>BuzzLink</div>
+        <br/>
+        <h2>Create a Room</h2>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
         
-        <div>
-          <label>Room Type:</label>
-          <select
-            name="roomType"
-            value={formData.roomType}
-            onChange={handleChange}
-            required
-          >
-            <option value="Test">Test</option>
-            <option value="Study">Study</option>
-            <option value="Gaming">Gaming</option>
-            <option value="Watch Party">Some other type</option>
-          </select>
-        </div>
-
-        <div>
-          <label>Participant Limit (optional):</label>
-          <input
-            type="number"
-            name="participantLimit"
-            value={formData.participantLimit}
-            onChange={handleChange}
-            min="1"
-          />
-        </div>
-
-        <button type="submit">Create Room</button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Room Name (required):</label>
+            <input
+              type="text"
+              name="roomName"
+              value={formData.roomName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          
+          <div>
+            <label>Room Type:</label>
+            <select
+              name="roomType"
+              value={formData.roomType}
+              onChange={handleChange}
+              required
+            >
+              <option value="Test">Test</option>
+              <option value="Study">Study</option>
+              <option value="Gaming">Gaming</option>
+              <option value="Watch Party">Some other type</option>
+            </select>
+          </div>
+          <br></br>
+          <div>
+            <label>Participant Limit (optional):</label>
+            <br></br>
+            <input
+              type="number"
+              name="participantLimit"
+              value={formData.participantLimit}
+              onChange={handleChange}
+              min="1"
+            />
+          </div>
+          <br></br>
+          <button className="submitButton" type="submit">Create Room</button>
+        </form>
+      </div>
     </div>
   );
 };
