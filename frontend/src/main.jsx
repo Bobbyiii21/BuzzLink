@@ -22,7 +22,7 @@ import Home from './pages/Home.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: <Home />,
     errorElement: <ErrorPage />,
   },
   {
@@ -49,7 +49,13 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Auth0Provider>
+    <Auth0Provider
+      domain="dev-mmaidvm00x7jb62h.us.auth0.com"
+        clientId="ttlR1OCd5NpfLOgY8ZtW5WYNPOIOkRME"
+        authorizationParams={{
+          redirect_uri: window.location.origin
+        }}
+      >
      <RouterProvider router={router} />
     </Auth0Provider>
   </StrictMode>,

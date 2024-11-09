@@ -1,346 +1,367 @@
 .titlebar {
-    background-color: #203E62;
-    height: 150px;
-    display: flex;
-    align-items: center; /* Vertically center the content */
-    position: relative; /* Allows profile icon container to be positioned absolutely */
+  background-color: #203e62;
+  height: 150px;
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  position: relative; /* Allows profile icon container to be positioned absolutely */
 }
 
 .title {
-    color: #F0D097;
-    font-family: 'Cabin';
-    font-size: 64px;
-    font-weight: 500;
-    font-style: italic;
-    padding: 1.2%;
+  color: #f0d097;
+  font-family: "Cabin";
+  font-size: 64px;
+  font-weight: 500;
+  font-style: italic;
+  padding: 1.2%;
 }
 
 .divider {
-    background-color: #F0D097;
-    height: 10px;
+  background-color: #f0d097;
+  height: 10px;
 }
 
 .profile-icon-container {
-    position: absolute;
-    top: 10px; /* Adjust this value as needed to fine-tune vertical alignment */
-    right: 20px;
-    width: 100px;  /* Fixed width for the profile picture container */
-    height: 100px; /* Fixed height for the profile picture container */
-    display: flex;
-    align-items: center; /* Vertically center the profile icon inside the container */
-    justify-content: center; /* Center the profile icon horizontally */
+  position: absolute;
+  top: 25px; /* Adjust this value as needed to fine-tune vertical alignment */
+  right: 20px;
+  width: 100px; /* Fixed width for the profile picture container */
+  height: 100px; /* Fixed height for the profile picture container */
+  display: flex;
+  align-items: center; /* Vertically center the profile icon inside the container */
+  justify-content: center; /* Center the profile icon horizontally */
 }
 
 .profile-icon {
-    width: 100px; /* Adjust size */
-    height: 100px; /* Adjust size */
-    border-radius: 50%; /* Make the image round */
-    object-fit: cover; /* Ensures the image fits properly in the container */
+  width: 100px; /* Adjust size */
+  height: 100px; /* Adjust size */
+  border-radius: 50%; /* Make the image round */
+  object-fit: cover; /* Ensures the image fits properly in the container */
 }
 
 .status-indicator {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid #FFFFFF;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
 }
 
 .status-indicator.online {
-    background-color: #28A745; 
+  background-color: #28a745;
 }
 
 .status-indicator.offline {
-    background-color: #A9A9A9;
+  background-color: #a9a9a9;
 }
 
 .status-indicator.dnd {
-    background-color: #FF0000;
+  background-color: #ff0000;
 }
 
 .status-dropdown {
-    background-color: #FFFFFF;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    position: absolute;
-    top: 50px; /* Adjust to move the dropdown below the button */
-    right: 0px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 10;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  position: absolute;
+  top: 105px; /* Adjust to move the dropdown below the button */
+  right: 0px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 
 .status-option {
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #333;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
 }
 
 .status-option:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
 .status-selector {
-    margin-left: 20px;
-    padding: 5px;
-    font-size: 16px;
+  margin-left: 20px;
+  padding: 5px;
+  font-size: 16px;
 }
 
 .room-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
-    gap: 2%; /* Gap between the rows and columns */
-    padding: 2%; /* Optional: padding around the entire grid */
-    overflow: auto;
-    flex-grow: 1;
-    height: 62vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 2%; /* Gap between the rows and columns */
+  padding: 2%; /* Optional: padding around the entire grid */
+  overflow: auto;
+  flex-grow: 1;
+  height: 62vh;
 }
 
 .rooms {
-    display: grid;
-    margin: 5%;
-    width: 480px;
-    height: 300px;
+  display: grid;
+  margin: 5%;
+  width: 480px;
+  height: 300px;
 }
 
 .room-card {
-    width: 480px;
-    height: 300px;
-    border-radius: 15px;
-    background-color: #D9D9D9;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
+  width: 480px;
+  height: 300px;
+  border-radius: 15px;
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 
-    /* Add margin as a percentage of the container’s width */
-    margin: 2%; /* Margin between the room cards, relative to the width of the page */
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for visual depth */
+  /* Add margin as a percentage of the container’s width */
+  margin: 2%; /* Margin between the room cards, relative to the width of the page */
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for visual depth */
 }
 
 .room-card-footer {
-    background-color: #325886; 
-    height: 70px; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+  background-color: #325886;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .room-name {
-    color: #FFFFFF; 
-    font-family: 'Cabin', sans-serif; 
-    font-size: 36px; 
-    font-weight: 600;
-    margin: 0;
-    height: 44px;
-    overflow: hidden;
-    text-overflow: ellipsis; 
-    white-space: nowrap; 
+  color: #ffffff;
+  font-family: "Cabin", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0;
+  height: 44px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .join-room-button {
-    width: 155px; 
-    height: 50px; 
-    background-color: #F0D097; 
-    color: #244266; 
-    font-family: 'Cabin', sans-serif; 
-    font-size: 32px; 
-    font-weight: 500; 
-    border-radius: 15px; 
-    border: none;
-    cursor: pointer;
-    padding: 5px 15px;
-    text-align: center;
-    transition: background-color 0.3s, transform 0.1s;
+  width: 155px;
+  height: 50px;
+  background-color: #f0d097;
+  color: #244266;
+  font-family: "Cabin", sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 15px;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.1s;
 }
 
 .join-room-button:hover {
-    background-color: #e0b084; 
+  background-color: #e0b084;
 }
 
 .join-room-button:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 .room-card-header {
-    display: flex;
-    position: relative;
-    top: 10px;
-    align-items: center;
-    align-content: space-around;
-    justify-content: space-between;
+  display: flex;
+  position: relative;
+  top: 10px;
+  align-items: center;
+  align-content: space-around;
+  justify-content: space-between;
 }
 
 .participant-count {
-    display: flex;
-    position: relative;
-    left: 10px;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  position: relative;
+  left: 10px;
+  align-items: center;
+  gap: 10px;
 }
 
 .participant-icon-container {
-    width: 100px; 
-    height: 50px; 
-    background-color: #FCFCFC; 
-    border-radius: 15px; 
-    display: flex;
-    column-gap: 8px;
-    align-items: center;
-    justify-content: space-between; /* Spread icon to the left and number to the right */
-    padding: 0 10px; /* Optional: Add some padding inside the container */
-    border: 1px solid #325886; 
-    color: #244266; 
-    font-family: 'Cabin', sans-serif; 
-    font-size: 24px; 
-    font-weight: 500; 
+  width: 100px;
+  height: 50px;
+  background-color: #fcfcfc;
+  border-radius: 15px;
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  justify-content: space-between; /* Spread icon to the left and number to the right */
+  padding: 0 10px; /* Optional: Add some padding inside the container */
+  border: 1px solid #325886;
+  color: #244266;
+  font-family: "Cabin", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .participant-icon {
-    color: #244266; 
-    font-size: 32px; 
+  color: #244266;
+  font-size: 32px;
 }
 
 .lock-icon {
-    position: relative;
-    right: 38px;
-    color: #244266;
-    font-size: 44px;
+  position: relative;
+  right: 38px;
+  color: #244266;
+  font-size: 44px;
 }
 
 .participant-number {
-    color: #244266; 
-    font-family: 'Cabin', sans-serif; 
-    font-size: 24px; 
-    font-weight: 500;
-    margin-left: auto; /* Ensure it's aligned to the right */
+  color: #244266;
+  font-family: "Cabin", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: auto; /* Ensure it's aligned to the right */
 }
 
 .room-tag-container {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    top: 65px;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 65px;
+  justify-content: flex-end;
 }
 .room-tag {
-    background-color: #325886; 
-    color: #EECE94; 
-    font-family: 'Cabin', sans-serif; 
-    font-size: 24px; 
-    font-weight: 600; 
-    border-radius: 20px;
-    padding: 5px 10px;
-    text-align: center;
-    height: 30px;
-    width: 100px;
-    margin-right: 10px;
+  background-color: #325886;
+  color: #eece94;
+  font-family: "Cabin", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 5px 10px;
+  text-align: center;
+  height: 30px;
+  width: 100px;
+  margin-right: 10px;
 }
 
 .filter-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Filters will remain on the left */
-    background-color: #FFFFFF; 
-    padding: 10px 20px;
-    margin-bottom: 10px; 
-    border-radius: 15px;
-    gap: 10px; /* Optional: gap between filters */
-    max-width: 2280px; /* Add a maximum width to prevent content from spreading too far */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Filters will remain on the left */
+  background-color: #ffffff;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  gap: 10px; /* Optional: gap between filters */
+  max-width: 2280px; /* Add a maximum width to prevent content from spreading too far */
 }
 
 .filter-buttons {
-    display: flex;
-    gap: 10px; /* Keep a gap between each filter dropdown */
-    align-items: center; /* Vertically align items */
+  display: flex;
+  gap: 10px; /* Keep a gap between each filter dropdown */
+  align-items: center; /* Vertically align items */
 }
 
 .filter-button {
-    background-color: #325886; 
-    color: #FCFCFC; 
-    font-family: 'Cabin', sans-serif;
-    font-weight: 500; 
-    font-size: 16px; /* Reduced font size */
-    border: none;
-    border-radius: 10px;
-    padding: 5px 10px; /* Reduced padding for a more compact button */
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: auto; /* Auto width to fit the content */
-    height: 60px; /* Reduced height */
+  background-color: #325886;
+  color: #fcfcfc;
+  font-family: "Cabin", sans-serif;
+  font-weight: 500;
+  font-size: 16px; /* Reduced font size */
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px; /* Reduced padding for a more compact button */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto; /* Auto width to fit the content */
+  height: 60px; /* Reduced height */
 }
 
-
 .filter-button:hover {
-    background-color: #244266; 
+  background-color: #244266;
 }
 
 .add-filter-button {
-    background-color: #325886; 
-    color: #FCFCFC; 
-    font-family: 'Cabin', sans-serif; 
-    font-size: 64px;
-    font-weight: 600; 
-    border: none;
-    border-radius: 15px;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: #325886;
+  color: #fcfcfc;
+  font-family: "Cabin", sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  border: none;
+  border-radius: 15px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0.5rem;
 }
 
 .filters-label {
-    font-family: 'Cabin', sans-serif;
-    font-weight: 600; 
-    font-size: 36px; 
-    color: #244266; 
-    width: 102px; 
-    height: 44px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  font-family: "Cabin", sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  color: #244266;
+  width: 102px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .create-room-button {
-    margin-left: auto; /* This pushes the button all the way to the right */
-    font-family: 'Cabin', sans-serif;
-    font-size: 32px; 
-    font-weight: 600; 
-    border-radius: 10px;
-    width: 345px; 
-    height: 94px;
-    background-color: #172F49; 
-    color: #F3D09B; 
-    border: none; 
-    cursor: pointer;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: background-color 0.3s, transform 0.1s;
+  margin-left: auto; /* This pushes the button all the way to the right */
+  font-family: "Cabin", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  border-radius: 10px;
+  width: 345px;
+  height: 94px;
+  background-color: #172f49;
+  color: #f3d09b;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.1s;
 }
 
 .create-room-button:hover {
-    background-color: #0F1F34; 
+  background-color: #0f1f34;
 }
 
 .create-room-button:active {
-    transform: scale(0.98); 
+  transform: scale(0.98);
 }
 
 .plus-icon {
-    font-size: 96px; 
-    font-weight: bold; 
-    color: #F3D09B; 
-    margin-left: 10px; 
+  font-size: 96px;
+  font-weight: bold;
+  color: #f3d09b;
+  margin-left: 10px;
+  padding-bottom: 12px;
+  padding-left: 10px;
 }
 
+.login-button {
+  margin-left: auto; /* This pushes the button all the way to the right */
+  font-family: "Cabin", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  border-radius: 10px;
+  width: 345px;
+  height: 94px;
+  background-color: #f3d09b;
+  color: #172f49;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.1s;
+}
