@@ -15,6 +15,9 @@ import Create from "./pages/Create";
 import Meeting from './pages/Meeting.jsx';
 import Chatroom from './chatroom.jsx';
 import RoomForm from "./pages/RoomForm.jsx"
+import Home from './pages/Home.jsx';
+
+
 
 
 
@@ -41,10 +44,14 @@ const router = createBrowserRouter([
     element: <Chatroom />
   },
   {
+
     path: "/room-form", 
-    element: <RoomForm></RoomForm>
+    element: <RoomForm />
+  },
+  {
+    path: "/home",
+    element: <Home />
   }
-  
 ]);
 
 createRoot(document.getElementById('root')).render(

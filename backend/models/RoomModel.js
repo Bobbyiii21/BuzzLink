@@ -1,4 +1,8 @@
 const mongoose = require('mongoose')
+
+const User = require('./UserModel');
+
+
 const Schema = mongoose.Schema
 const userSchema = require('./UserModel').schema
 
@@ -13,10 +17,18 @@ const roomSchema = new Schema({
     },
     participantLimit: {
         type: Number,
-        required: true
-    }, 
+    },
+    locked: {
+      type: Boolean,
+      required: true,
+    },
     participantList: {
-        type: [userSchema]
+        type: [userSchema],
+        required: true
+    },
+    roomPassword: {
+        type: String,
+        required: false
     }
 }, { timestamps: true }, {collection: "Rooms"})
 
