@@ -17,7 +17,6 @@ import Chatroom from './chatroom.jsx';
 import RoomForm from "./pages/RoomForm.jsx"
 
 
-//for testing the frontend roomForm element, change back before making PR
 
 const router = createBrowserRouter([
   {
