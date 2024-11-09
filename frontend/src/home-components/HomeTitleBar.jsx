@@ -21,6 +21,14 @@ export function HomeTitleBar() {
     setDropdownVisible(false); // Close dropdown after selection
   };
 
+  const logoutFlow = () => {
+    if (
+      window.confirm(`Hey ${user.nickname}, Are you sure you want to log out?`)
+    ) {
+      logout();
+    }
+  };
+
   return (
     <>
       <div className="titlebar">
@@ -53,7 +61,7 @@ export function HomeTitleBar() {
                   >
                     Do Not Disturb
                   </div>
-                  <div className="status-option" onClick={() => logout()}>
+                  <div className="status-option" onClick={() => logoutFlow()}>
                     <span style={{ color: "red" }}>Exit Buzzlink</span>
                   </div>
                 </div>
